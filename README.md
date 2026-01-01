@@ -1,24 +1,38 @@
-# mega_sena
-Esse aqui é para ajudar você que fez bolão e tem que conferir muitos jogos, abasta seguir os passo indicados e ser feliz conferindo seus jogos, desde já boa sorte!
+# mega_sena Ver. 2.0
+Verificador de Ganhadores de Loteria
 
+Este projeto tem como objetivo verificar automaticamente quais jogos realizados em uma planilha Excel acertaram os números sorteados em um concurso de loteria.  
 
-Observações para fazer funcionar o sistema:
+# Funcionalidades
+- Lê os jogos realizados a partir de uma planilha Excel, (ainda vou fazer um sistema de reconheciento dos jogos para gerar o aquivo automático de leitura e criação da planilha, ou seja, ainda precisa fazer o levantamento manual das informações).
+- Permite inserir os números sorteados manualmente via prompt.
+- Verifica os acertos de cada jogo e classifica os ganhadores conforme a quantidade de dezenas corretas (6, 5, 4, 3 ou 2).
+- Exibe mensagens personalizadas para cada nível de acerto.
 
-para fazer funcionar, você precisará ter o arquivo em xlsx, e indicar o caminho na linha com o nome arquivo_excel = r'aqui você colocar onde você salvou o arquivo no seu computador, dar um exemplo simples, se ele estiver salvo na pasta de documentos: C:\Users\ nome do usuário \Documents\ nome do arquivo.xlsx
+# Como usar
+1. Instale as dependências necessárias:
+  
+   pip install pandas
+  
+2. Configure o caminho do arquivo Excel no código:
+   
+   arquivo_excel = r"C:\Users\NOMEDOARQUIVO.xlsx" ---> Substitua pelo caminho correto da sua planilha.
 
-para fazer funcionar, você precisará também criar os jogos na planilha mantendo essa regra nos títulos das colunas, e nas linha:
+3. Certifique-se de que a planilha contenha uma coluna chamada "Números" (ou ajuste o nome da coluna no código).
 
-Título das colunas --->Jogo	numero
-título das linhas ---> Jogo 1	07 14 27 32 39 46
-                       Jogo 2	12 29 35 49 53 55
+4. Execute o script:
+   
+   python nome_do_arquivo.py
 
-o jogo 1 está em uma célula, e os número em outro célula, nessa célula onde estão os números eles devem ser separados por espaços e não vírgulas.
-
-
-Local no código onde vocês devem fazer alterações citadas acima:
-
-def main():
-    # Lê os jogos realizados a partir de uma planilha Excel
-    arquivo_excel = r"C:\Users\...\arquivo_com_seus_jogos.xlsx" #aqui você coloca o caminho da sua planilha do excel com os jogos, ver nota no "read me"
-    coluna_numeros = 'Números'  # Substitua 'Números' pelo nome correto da sua coluna, ver nota no "read me"
-    jogos = pd.read_excel(arquivo_excel)[coluna_numeros]
+# Exemplo de saída
+- Caso um jogo acerte 6 dezenas:
+  
+  Parabéns! Você acertou as 6 dezenas nos seguintes jogos: [1, 5]
+  
+- Caso acerte menos:
+  
+  Você acertou 4 dezenas nos seguintes jogos: [2, 7, 9]
+  
+- Se não houver ganhadores:
+  
+  Infelizmente, você não ganhou em nenhum jogo.
